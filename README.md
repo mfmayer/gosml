@@ -18,7 +18,7 @@ import (
 
 ## Example
 
-For an example see [examples/emmon](https://github.com/mfmayer/gosml/blob/master/examples/emmon/readme.md) and the [libsml](https://github.com/volkszaehler/libsml) documentation.
+For an example see [examples/emmon](https://github.com/mfmayer/gosml/tree/master/examples/emmon) and the [libsml](https://github.com/volkszaehler/libsml) documentation.
 
 ## Status
 
