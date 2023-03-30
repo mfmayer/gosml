@@ -1,13 +1,8 @@
 language: go
 go:
-  - 1.8
-  - 1.9
-  - "1.10"
-  - master
+  - 1.19
 env:
-  - "PATH=/home/travis/gopath/bin:$PATH"
 before_install:
-  - go get -u github.com/golang/dep/cmd/dep
-  - dep ensure
+  - go mod tidy
 script:
   - go build

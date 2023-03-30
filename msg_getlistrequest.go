@@ -1,4 +1,4 @@
-package sml
+package gosml
 
 type GetListRequest struct {
 	ClientID OctetString
@@ -12,27 +12,27 @@ func GetListRequestParse(buf *Buffer) (GetListRequest, error) {
 	msg := GetListRequest{}
 	var err error
 
-	if err := Expect(buf, TYPELIST, 5); err != nil {
+	if err := buf.Expect(OCTET_TYPE_LIST, 5); err != nil {
 		return msg, err
 	}
 
-	if msg.ClientID, err = OctetStringParse(buf); err != nil {
+	if msg.ClientID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ServerID, err = OctetStringParse(buf); err != nil {
+	if msg.ServerID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.Username, err = OctetStringParse(buf); err != nil {
+	if msg.Username, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.Password, err = OctetStringParse(buf); err != nil {
+	if msg.Password, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ListName, err = OctetStringParse(buf); err != nil {
+	if msg.ListName, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 

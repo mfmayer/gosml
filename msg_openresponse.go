@@ -1,4 +1,4 @@
-package sml
+package gosml
 
 type OpenResponse struct {
 	Codepage  OctetString
@@ -13,31 +13,31 @@ func OpenResponseParse(buf *Buffer) (OpenResponse, error) {
 	msg := OpenResponse{}
 	var err error
 
-	if err := Expect(buf, TYPELIST, 6); err != nil {
+	if err := buf.Expect(OCTET_TYPE_LIST, 6); err != nil {
 		return msg, err
 	}
 
-	if msg.Codepage, err = OctetStringParse(buf); err != nil {
+	if msg.Codepage, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ClientID, err = OctetStringParse(buf); err != nil {
+	if msg.ClientID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ReqFileID, err = OctetStringParse(buf); err != nil {
+	if msg.ReqFileID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ServerID, err = OctetStringParse(buf); err != nil {
+	if msg.ServerID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.RefTime, err = TimeParse(buf); err != nil {
+	if msg.RefTime, err = buf.TimeParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.Version, err = U8Parse(buf); err != nil {
+	if msg.Version, err = buf.U8Parse(); err != nil {
 		return msg, err
 	}
 

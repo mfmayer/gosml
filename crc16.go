@@ -1,4 +1,4 @@
-package sml
+package gosml
 
 const (
 	pppinitfcs16 uint16 = 0xffff // initial FCS value
@@ -27,7 +27,7 @@ var fcstab = [256]uint16{0x0000, 0x1189, 0x2312, 0x329b, 0x4624, 0x57ad, 0x6536,
 	0xc514, 0xb1ab, 0xa022, 0x92b9, 0x8330, 0x7bc7, 0x6a4e, 0x58d5, 0x495c, 0x3de3, 0x2c6a, 0x1ef1, 0x0f78,
 }
 
-func Crc16Calculate(buf []byte, len int) uint16 {
+func crc16Calculate(buf []byte, len int) uint16 {
 	fcs := pppinitfcs16
 	idx := 0
 

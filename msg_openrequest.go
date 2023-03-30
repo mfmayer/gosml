@@ -1,4 +1,4 @@
-package sml
+package gosml
 
 type OpenRequest struct {
 	Codepage  OctetString // optional
@@ -14,35 +14,35 @@ func OpenRequestParse(buf *Buffer) (OpenRequest, error) {
 	msg := OpenRequest{}
 	var err error
 
-	if err := Expect(buf, TYPELIST, 7); err != nil {
+	if err := buf.Expect(OCTET_TYPE_LIST, 7); err != nil {
 		return msg, err
 	}
 
-	if msg.Codepage, err = OctetStringParse(buf); err != nil {
+	if msg.Codepage, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ClientID, err = OctetStringParse(buf); err != nil {
+	if msg.ClientID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ReqFileID, err = OctetStringParse(buf); err != nil {
+	if msg.ReqFileID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.ServerID, err = OctetStringParse(buf); err != nil {
+	if msg.ServerID, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.Username, err = OctetStringParse(buf); err != nil {
+	if msg.Username, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.Password, err = OctetStringParse(buf); err != nil {
+	if msg.Password, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
-	if msg.Version, err = U8Parse(buf); err != nil {
+	if msg.Version, err = buf.U8Parse(); err != nil {
 		return msg, err
 	}
 

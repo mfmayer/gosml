@@ -1,4 +1,4 @@
-package sml
+package gosml
 
 type CloseResponse CloseRequest
 
@@ -6,11 +6,11 @@ func CloseResponseParse(buf *Buffer) (CloseResponse, error) {
 	msg := CloseResponse{}
 	var err error
 
-	if err := Expect(buf, TYPELIST, 1); err != nil {
+	if err := buf.Expect(OCTET_TYPE_LIST, 1); err != nil {
 		return msg, err
 	}
 
-	if msg.GlobalSignature, err = OctetStringParse(buf); err != nil {
+	if msg.GlobalSignature, err = buf.OctetStringParse(); err != nil {
 		return msg, err
 	}
 
