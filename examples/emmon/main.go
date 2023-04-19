@@ -22,7 +22,7 @@ func main() {
 
 	// define a handling callback function that get's called for matching obis list entries
 	handleFunc := func(message *sml.ListEntry) {
-		fmt.Printf("%s %f\n", message.ObjectName(), message.Float())
+		fmt.Printf("%s %s\n", message.ObjectName(), message.ValueString())
 	}
 
 	// Go through all arguments
@@ -42,6 +42,6 @@ func main() {
 		r := bufio.NewReader(f)
 		// read the file using gosml module with the option
 		// to call handleFunc for list entries that match the 1-1:1.8.0 obis code
-		sml.Read(r, sml.WithObisCallback(sml.OctetString{1, 0, 1, 8, 0}, handleFunc))
+		sml.Read(r, sml.WithObisCallback(sml.OctetString{}, handleFunc))
 	}
 }

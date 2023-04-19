@@ -15,4 +15,8 @@
 # compiled binary of server command
 examples/emmon/emmon
 
+# vscode config folder
+.vscode/
+
 /vendor
+examples/emmon/emmon_pi
