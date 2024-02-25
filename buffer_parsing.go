@@ -98,7 +98,7 @@ func (buf *Buffer) NumberParse(numType uint8, maxSize int) (int64, error) {
 	var num int64
 	switch maxSize {
 	case TYPE_NUMBER_8:
-		num = int64(np[0])
+		num = int64(int8(np[0]))
 	case TYPE_NUMBER_16:
 		num = int64(int16(binary.BigEndian.Uint16(np)))
 	case TYPE_NUMBER_32:
