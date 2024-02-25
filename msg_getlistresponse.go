@@ -30,10 +30,7 @@ func (le *ListEntry) ObjectName() string {
 }
 
 func (le *ListEntry) Scaler() float64 {
-	scaler := 1
-	if le.scaler != 0 {
-		scaler = int(le.scaler)
-	}
+	scaler := int(le.scaler)
 	return math.Pow10(scaler)
 }
 
